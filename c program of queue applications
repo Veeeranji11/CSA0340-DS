@@ -1,0 +1,186 @@
+
+
+Operation 1: enqueue()
+Inserts an element at the end of the queue i.e. at the rear end.
+
+The following steps should be taken to enqueue (insert) data into a queue:
+
+Check if the queue is full.
+If the queue is full, return overflow error and exit.
+If the queue is not full, increment the rear pointer to point to the next empty space.
+Add the data element to the queue location, where the rear is pointing.
+return success.
+
+Enqueue representation
+Enqueue representation
+
+Below is the Implementation of the above approach:
+
+// Function to add an item to the queue.
+// It changes rear and size
+void enqueue(struct Queue* queue, int item)
+{
+    if (isFull(queue))
+        return;
+    queue->rear = (queue->rear + 1) % queue->capacity;
+    queue->array[queue->rear] = item;
+    queue->size = queue->size + 1;
+    printf("%d enqueued to queue\n", item);
+}
+ 
+// This code is contributed by Susobhan Akhuli
+Complexity Analysis:
+Time Complexity: O(1)
+Space Complexity: O(N)
+
+Operation 2: dequeue()
+This operation removes and returns an element that is at the front end of the queue.
+
+The following steps are taken to perform the dequeue operation:
+
+Check if the queue is empty.
+If the queue is empty, return the underflow error and exit.
+If the queue is not empty, access the data where the front is pointing.
+Increment the front pointer to point to the next available data element.
+The Return success.
+ 
+
+Dequeue operation
+Dequeue operation
+
+Below is the Implementation of above approach:
+
+// Function to remove an item from queue.
+// It changes front and size
+int dequeue(struct Queue* queue)
+{
+    if (isEmpty(queue)) {
+        printf("\nQueue is empty\n");
+        return;
+    }
+    int item = queue->array[queue->front];
+    queue->front = (queue->front + 1) % queue->capacity;
+    queue->size = queue->size - 1;
+    return item;
+}
+ 
+// This code is contributed by Susobhan Akhuli
+Complexity Analysis:
+Time Complexity: O(1)
+Space Complexity: O(N)
+
+Operation 3: front()
+This operation returns the element at the front end without removing it.
+
+The following steps are taken to perform the front operation:
+
+If the queue is empty return the most minimum value.
+otherwise, return the front value.
+Below is the Implementation of the above approach:
+
+// Function to get front of queue
+int front(Queue* queue)
+{
+    if (isempty(queue))
+        return INT_MIN;
+    return queue->arr[queue->front];
+}
+Complexity Analysis:
+Time Complexity: O(1)
+Space Complexity: O(N)
+
+Operation 4 : rear()
+This operation returns the element at the rear end without removing it.
+
+The following steps are taken to perform the rear operation:
+
+If the queue is empty return the most minimum value.
+otherwise, return the rear value.
+Below is the Implementation of the above approach:
+
+// Function to get rear of queue
+int rear(Queue* queue)
+{
+    if (isEmpty(queue))
+        return INT_MIN;
+    return queue->arr[queue->rear];
+}
+Complexity Analysis:
+Time Complexity: O(1)
+Space Complexity: O(N)
+
+Operation 5: isEmpty(): 
+This operation returns a boolean value that indicates whether the queue is empty or not.
+
+The following steps are taken to perform the Empty operation:
+
+check if front value is equal to -1 or not, if yes then return true means queue is empty.
+Otherwise return false, means queue is not empty
+Below is the implementation of the above approach:
+
+// This function will check whether
+// the queue is empty or not:
+bool isEmpty()
+{
+    if (front == -1)
+        return true;
+    else
+        return false;
+}
+Complexity Analysis:
+Time Complexity: O(1)
+Space Complexity: O(N)
+
+Operation 6 : isFull()
+This operation returns a boolean value that indicates whether the queue is full or not.
+
+The following steps are taken to perform the isFull() operation:
+
+Check if front value is equal to zero and rear is equal to the capacity of queue if yes then return true.
+otherwise return false
+Below is the Implementation of the above approach:
+
+// This function will check
+// whether the queue is full or not.
+bool isFull()
+{
+    if (front == 0 && rear == MAX_SIZE - 1) {
+        return true;
+    }
+    return false;
+}
+Complexity Analysis:
+Time Complexity: O(1)
+Space Complexity: O(N)
+
+Operation 7: size()
+This operation returns the size of the queue i.e. the total number of elements it contains.
+
+queuename.size()
+Parameters :
+No parameters are passed
+Returns :
+Number of elements in the container
+using System;
+using System.Collections.Generic;
+ 
+namespace ConsoleApp1 {
+  class MainClass {
+    public static void Main(string[] args)
+    {
+      int sum = 0;
+      Queue<int> myqueue = new Queue<int>();
+      myqueue.Enqueue(1);
+      myqueue.Enqueue(8);
+      myqueue.Enqueue(3);
+      myqueue.Enqueue(6);
+      myqueue.Enqueue(2);
+ 
+      // Queue becomes 1, 8, 3, 6, 2
+ 
+      Console.WriteLine(myqueue.Count);
+    }
+  }
+}
+ 
+// This code is contributed by adityamaharshi21
